@@ -1,0 +1,65 @@
+package ir.logicbase.persiandatepicker.app
+
+import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
+import ir.logicbase.persiandatepicker.CalendarConstraints
+import ir.logicbase.persiandatepicker.MaterialDatePicker
+import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
+
+class MainActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        setSupportActionBar(toolbar)
+
+        val calendar = MaterialDatePicker.clearedUtcCalendar()
+        calendar.timeInMillis = MaterialDatePicker.todayInUtcMilliseconds()
+        val colorState1 = ResourcesCompat.getColor(resources, R.color.colorCalendarState1, null)
+        val colorState2 = ResourcesCompat.getColor(resources, R.color.colorCalendarState2, null)
+        val colorState3 = ResourcesCompat.getColor(resources, R.color.colorCalendarState3, null)
+        val dayToColorMap = mutableMapOf<Long, Int>()
+        repeat(10) {
+            dayToColorMap[calendar.timeInMillis] = colorState1
+            calendar.add(Calendar.DAY_OF_MONTH, 1)
+        }
+        repeat(10) {
+            dayToColorMap[calendar.timeInMillis] = colorState2
+            calendar.add(Calendar.DAY_OF_MONTH, 1)
+        }
+        repeat(10) {
+            dayToColorMap[calendar.timeInMillis] = colorState3
+            calendar.add(Calendar.DAY_OF_MONTH, 1)
+        }
+        val hintTitleToColor =
+            mapOf("حالت اول" to colorState1, "حالت دوم" to colorState2, "حالت سوم" to colorState3)
+
+        fab.setOnClickListener {
+            val builder = MaterialDatePicker.Builder.datePicker()
+            val today = MaterialDatePicker.todayInUtcMilliseconds()
+            builder.setSelection(today)
+
+            val constraintsBuilder = CalendarConstraints.Builder()
+            constraintsBuilder.setStart(today) // start month
+            constraintsBuilder.setEnd(MaterialDatePicker.futureMonthInUtcMilliseconds(6)) // end month
+            constraintsBuilder.setOpenAt(today) // calendar first visible month when opening
+            constraintsBuilder.setDayToItemBackgroundColor(dayToColorMap)
+            constraintsBuilder.setHintTitleToColor(hintTitleToColor)
+
+            builder.setCalendarConstraints(constraintsBuilder.build())
+            val picker = builder.build()
+            picker.addOnPositiveButtonClickListener { selection ->
+                Toast.makeText(
+                    applicationContext,
+                    "selection : $selection = ${picker.headerText}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+            picker.show(supportFragmentManager, picker.toString())
+        }
+    }
+
+}

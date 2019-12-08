@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="App.TextAppearance.Headline1" parent="TextAppearance.MaterialComponents.Headline1" >
+        <item name="android:fontFamily">@font/samim_fd</item>
+        <item name="fontFamily">@font/samim_fd</item>
+    </style>
+
+    <style name="App.TextAppearance.Headline2" parent="TextAppearance.MaterialComponents.Headline2" >
+        <item name="android:fontFamily">@font/samim_fd</item>
+        <item name="fontFamily">@font/samim_fd</item>
+    </style>
+
+    <style name="App.TextAppearance.Headline3" parent="TextAppearance.MaterialComponents.Headline3" >
+        <item name="android:fontFamily">@font/samim_fd</item>
+        <item name="fontFamily">@font/samim_fd</item>
+    </style>
+
+    <style name="App.TextAppearance.Headline4" parent="TextAppearance.MaterialComponents.Headline4" >
+        <item name="android:fontFamily">@font/samim_fd</item>
+        <item name="fontFamily">@font/samim_fd</item>
+    </style>
+
+    <style name="App.TextAppearance.Headline5" parent="TextAppearance.MaterialComponents.Headline5" >
+        <item name="android:fontFamily">@font/samim_fd</item>
+        <item name="fontFamily">@font/samim_fd</item>
+    </style>
+
+    <style name="App.TextAppearance.Headline6" parent="TextAppearance.MaterialComponents.Headline6" >
+        <item name="android:fontFamily">@font/samim_fd</item>
+        <item name="fontFamily">@font/samim_fd</item>
+    </style>
+
+    <style name="App.TextAppearance.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1" >
+        <item name="android:fontFamily">@font/samim_fd</item>
+        <item name="fontFamily">@font/samim_fd</item>
+    </style>
+
+    <style name="App.TextAppearance.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2" >
+        <item name="android:fontFamily">@font/samim_fd</item>
+        <item name="fontFamily">@font/samim_fd</item>
+    </style>
+
+    <style name="App.TextAppearance.Body1" parent="TextAppearance.MaterialComponents.Body1" >
+        <item name="android:fontFamily">@font/samim_fd</item>
+        <item name="fontFamily">@font/samim_fd</item>
+    </style>
+
+    <style name="App.TextAppearance.Body2" parent="TextAppearance.MaterialComponents.Body2" >
+        <item name="android:fontFamily">@font/samim_fd</item>
+        <item name="fontFamily">@font/samim_fd</item>
+    </style>
+
+    <style name="App.TextAppearance.Caption" parent="TextAppearance.MaterialComponents.Caption" >
+        <item name="android:fontFamily">@font/samim_fd</item>
+        <item name="fontFamily">@font/samim_fd</item>
+    </style>
+
+    <style name="App.TextAppearance.Button" parent="TextAppearance.MaterialComponents.Button" >
+        <item name="android:fontFamily">@font/samim_fd</item>
+        <item name="fontFamily">@font/samim_fd</item>
+    </style>
+
+    <style name="App.TextAppearance.Overline" parent="TextAppearance.MaterialComponents.Overline" >
+        <item name="android:fontFamily">@font/samim_fd</item>
+        <item name="fontFamily">@font/samim_fd</item>
+    </style>
+</resources>
