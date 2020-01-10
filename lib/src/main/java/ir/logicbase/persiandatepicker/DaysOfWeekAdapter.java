@@ -52,7 +52,7 @@ class DaysOfWeekAdapter extends BaseAdapter {
     private static final int CALENDAR_DAY_STYLE = VERSION.SDK_INT >= VERSION_CODES.O ? NARROW_FORMAT : Calendar.SHORT;
 
     public DaysOfWeekAdapter() {
-        calendar = UtcDates.getCalendar();
+        calendar = UtcDates.getUtcCalendar();
         daysInWeek = calendar.getMaximum(Calendar.DAY_OF_WEEK);
         firstDayOfWeek = calendar.getFirstDayOfWeek();
     }

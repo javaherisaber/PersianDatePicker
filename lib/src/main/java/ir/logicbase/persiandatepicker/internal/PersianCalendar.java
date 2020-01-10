@@ -12,9 +12,6 @@ import java.util.TimeZone;
 
 public class PersianCalendar extends Calendar {
 
-    // default timezone
-    private static final String UTC = "UTC";
-
     /**
      * Value for the after hejra era.
      */
@@ -212,7 +209,7 @@ public class PersianCalendar extends Calendar {
      * time with the default {@code Locale} and {@code TimeZone}.
      */
     public PersianCalendar() {
-        this(TimeZone.getTimeZone(UTC), Locale.getDefault());
+        this(TimeZone.getDefault(), Locale.getDefault());
     }
 
     /**
@@ -224,7 +221,7 @@ public class PersianCalendar extends Calendar {
      * @param day   the day of the month.
      */
     public PersianCalendar(int year, int month, int day) {
-        super(TimeZone.getTimeZone(UTC), Locale.getDefault());
+        super(TimeZone.getDefault(), Locale.getDefault());
         set(year, month, day);
     }
 
@@ -239,7 +236,7 @@ public class PersianCalendar extends Calendar {
      * @param minute the minute.
      */
     public PersianCalendar(int year, int month, int day, int hour, int minute) {
-        super(TimeZone.getTimeZone(UTC), Locale.getDefault());
+        super(TimeZone.getDefault(), Locale.getDefault());
         set(year, month, day, hour, minute);
     }
 
@@ -257,7 +254,7 @@ public class PersianCalendar extends Calendar {
     public PersianCalendar(
             int year, int month, int day, int hour,
             int minute, int second) {
-        super(TimeZone.getTimeZone(UTC), Locale.getDefault());
+        super(TimeZone.getDefault(), Locale.getDefault());
         set(year, month, day, hour, minute, second);
     }
 
@@ -268,7 +265,7 @@ public class PersianCalendar extends Calendar {
      * @param locale the {@code Locale}.
      */
     public PersianCalendar(Locale locale) {
-        this(TimeZone.getTimeZone(UTC), locale);
+        this(TimeZone.getDefault(), locale);
     }
 
     /**
@@ -448,10 +445,6 @@ public class PersianCalendar extends Calendar {
 
     @Override
     protected void computeTime() {
-        // Time is the reference and
-        if (!isSet(YEAR) || !isSet(MONTH)) {
-            return;
-        }
         if (fields[YEAR] == 0) {
             throw new IllegalArgumentException("Year cannot be zero");
         }

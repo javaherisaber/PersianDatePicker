@@ -56,7 +56,6 @@ import java.util.Map;
 
 import ir.logicbase.persiandatepicker.dialog.InsetDialogOnTouchListener;
 import ir.logicbase.persiandatepicker.internal.CheckableImageButton;
-import ir.logicbase.persiandatepicker.internal.PersianCalendar;
 import ir.logicbase.persiandatepicker.resource.MaterialAttributes;
 
 /**
@@ -93,7 +92,7 @@ public final class MaterialDatePicker<S> extends DialogFragment {
     }
 
     public static Calendar clearedUtcCalendar() {
-        PersianCalendar calendar = new PersianCalendar();
+        Calendar calendar = UtcDates.getTodayCalendar();
         calendar.clear();
         return calendar;
     }
@@ -154,8 +153,7 @@ public final class MaterialDatePicker<S> extends DialogFragment {
         bundle.putInt(OVERRIDE_THEME_RES_ID, overrideThemeResId);
         bundle.putParcelable(DATE_SELECTOR_KEY, dateSelector);
 
-        CalendarConstraints.Builder constraintsBuilder =
-                new CalendarConstraints.Builder(calendarConstraints);
+        CalendarConstraints.Builder constraintsBuilder = new CalendarConstraints.Builder(calendarConstraints);
         if (calendar.getCurrentMonth() != null) {
             constraintsBuilder.setOpenAt(calendar.getCurrentMonth().timeInMillis);
         }
@@ -297,9 +295,7 @@ public final class MaterialDatePicker<S> extends DialogFragment {
                     getResources().getDimensionPixelOffset(R.dimen.mtrl_calendar_dialog_background_inset);
             Rect insets = new Rect(inset, inset, inset, inset);
             window.setBackgroundDrawable(new InsetDrawable(background, inset, inset, inset, inset));
-            window
-                    .getDecorView()
-                    .setOnTouchListener(new InsetDialogOnTouchListener(requireDialog(), insets));
+            window.getDecorView().setOnTouchListener(new InsetDialogOnTouchListener(requireDialog(), insets));
         }
         startPickerFragment();
     }

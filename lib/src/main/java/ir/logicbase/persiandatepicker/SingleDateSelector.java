@@ -150,7 +150,7 @@ public class SingleDateSelector implements DateSelector<Long> {
     if (selectedItem == null) {
       return res.getString(R.string.mtrl_picker_date_header_unselected);
     }
-    Calendar calendar = UtcDates.getCalendar();
+    Calendar calendar = UtcDates.getUtcCalendar();
     calendar.setTimeInMillis(selectedItem);
     int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
     int month = calendar.get(Calendar.MONTH);
