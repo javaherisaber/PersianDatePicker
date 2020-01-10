@@ -32,4 +32,19 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="App.Theme.PersianDatePicker" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <item name="materialCalendarHeaderCard">@style/App.Theme.PersianDatePicker.HeaderCard</item>
+        <item name="materialCalendarStyle">@style/App.Theme.PersianDatePicker.Calendar</item>
+        <item name="shapeAppearanceLargeComponent">@style/App.ShapeAppearance.LargeComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/App.ShapeAppearance.MediumComponent</item>
+        <item name="shapeAppearanceSmallComponent">@style/App.ShapeAppearance.SmallComponent</item>
+    </style>
+
+    <style name="App.Theme.PersianDatePicker.Calendar" parent="Widget.MaterialComponents.MaterialCalendar">
+        <item name="shapeAppearance">@style/App.ShapeAppearance.LargeComponent</item>
+    </style>
+
+    <style name="App.Theme.PersianDatePicker.HeaderCard" parent="Widget.Logicbase.PersianCalendar.HeaderCard">
+        <item name="shapeAppearanceOverlay">@style/App.ShapeAppearance.LargeComponent.TopLeftOnly</item>
+    </style>
 </resources>

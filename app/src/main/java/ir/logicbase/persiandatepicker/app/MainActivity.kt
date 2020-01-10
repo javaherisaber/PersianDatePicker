@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             constraintsBuilder.setHintTitleToColor(hintTitleToColor)
 
             builder.setCalendarConstraints(constraintsBuilder.build())
+            builder.setTheme(R.style.App_Theme_PersianDatePicker)
             val picker = builder.build()
             picker.addOnPositiveButtonClickListener { selection ->
                 Toast.makeText(

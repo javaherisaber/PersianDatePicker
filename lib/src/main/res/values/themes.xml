@@ -25,6 +25,7 @@
     <item name="materialCalendarStyle">@style/Widget.MaterialComponents.MaterialCalendar</item>
 
     <!-- Header Styles -->
+    <item name="materialCalendarHeaderCard">@style/Widget.Logicbase.PersianCalendar.HeaderCard</item>
     <item name="materialCalendarHeaderLayout">@style/Widget.MaterialComponents.MaterialCalendar.HeaderLayout</item>
     <item name="materialCalendarHeaderDivider">@style/Widget.MaterialComponents.MaterialCalendar.HeaderDivider</item>
     <item name="materialCalendarHeaderTitle">@style/Widget.MaterialComponents.MaterialCalendar.HeaderTitle</item>

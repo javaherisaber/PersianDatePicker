@@ -55,6 +55,10 @@
         </item>
     </style>
 
+    <style name="Widget.Logicbase.PersianCalendar.HeaderCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">?attr/colorPrimary</item>
+    </style>
+
     <style name="Widget.MaterialComponents.MaterialCalendar.HeaderLayout" parent="android:Widget">
         <item name="android:background">?attr/colorPrimary</item>
     </style>
@@ -122,7 +126,7 @@
         <item name="itemTextColor">@color/material_on_surface_emphasis_high_type</item>
         <item name="itemStrokeColor">@color/mtrl_calendar_item_stroke_color</item>
         <item name="itemStrokeWidth">1dp</item>
-        <item name="itemShapeAppearance">?attr/shapeAppearanceSmallComponent</item>
+<!--        <item name="itemShapeAppearance">?attr/shapeAppearanceSmallComponent</item>-->
     </style>
 
     <style name="Widget.MaterialComponents.MaterialCalendar.Day" parent="Widget.MaterialComponents.MaterialCalendar.Item">

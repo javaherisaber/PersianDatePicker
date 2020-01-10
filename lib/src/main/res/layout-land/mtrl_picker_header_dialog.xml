@@ -18,39 +18,46 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/mtrl_picker_header"
-        style="?attr/materialCalendarHeaderLayout"
-        android:layout_width="wrap_content"
+    <com.google.android.material.card.MaterialCardView
+        style="?attr/materialCalendarHeaderCard"
         android:layout_height="match_parent"
-        android:layout_gravity="start|center_horizontal"
-        android:orientation="vertical"
-        android:paddingStart="@dimen/mtrl_calendar_header_content_padding"
-        android:paddingLeft="@dimen/mtrl_calendar_header_content_padding"
-        android:paddingEnd="@dimen/mtrl_calendar_header_content_padding"
-        android:paddingRight="@dimen/mtrl_calendar_header_content_padding"
-        android:paddingBottom="@dimen/mtrl_calendar_header_content_padding">
+        android:layout_width="wrap_content">
 
-        <FrameLayout
-            android:id="@+id/mtrl_picker_header_title_and_selection"
-            android:layout_width="@dimen/mtrl_calendar_landscape_header_width"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingStart="@dimen/mtrl_calendar_header_text_padding"
-            android:paddingLeft="@dimen/mtrl_calendar_header_text_padding"
-            tools:ignore="RtlSymmetry">
+        <LinearLayout
+            android:id="@+id/mtrl_picker_header"
+            style="?attr/materialCalendarHeaderLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center_horizontal"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/mtrl_calendar_header_content_padding"
+            android:paddingLeft="@dimen/mtrl_calendar_header_content_padding"
+            android:paddingEnd="@dimen/mtrl_calendar_header_content_padding"
+            android:paddingRight="@dimen/mtrl_calendar_header_content_padding"
+            android:paddingBottom="@dimen/mtrl_calendar_header_content_padding">
 
-            <include layout="@layout/mtrl_picker_header_title_text" />
+            <FrameLayout
+                android:id="@+id/mtrl_picker_header_title_and_selection"
+                android:layout_width="@dimen/mtrl_calendar_landscape_header_width"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/mtrl_calendar_header_text_padding"
+                android:paddingLeft="@dimen/mtrl_calendar_header_text_padding"
+                tools:ignore="RtlSymmetry">
 
-            <include layout="@layout/mtrl_picker_header_selection_text" />
+                <include layout="@layout/mtrl_picker_header_title_text" />
 
-        </FrameLayout>
+                <include layout="@layout/mtrl_picker_header_selection_text" />
 
-        <include
-            layout="@layout/mtrl_picker_header_toggle"
-            android:visibility="gone" />
+            </FrameLayout>
 
-    </LinearLayout>
+            <include
+                layout="@layout/mtrl_picker_header_toggle"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
     <View
         style="?attr/materialCalendarHeaderDivider"
