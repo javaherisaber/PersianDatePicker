@@ -28,7 +28,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
-import ir.logicbase.persiandatepicker.internal.PersianCalendar;
+import ir.logicbase.jalalicalendar.JalaliCalendar;
 
 /**
  * Utility class for common operations on timezones, calendars, dateformats, and longs representing
@@ -51,7 +51,11 @@ class UtcDates {
     }
 
     static Calendar getTodayCalendar() {
-        return getDayCopy(new PersianCalendar(getTimeZone()));
+        return getDayCopy(getCalendarInstance());
+    }
+
+    private static Calendar getCalendarInstance() {
+        return new JalaliCalendar(getTimeZone());
     }
 
     /**
@@ -74,7 +78,7 @@ class UtcDates {
      * @see @see Calendar#clear()
      */
     static Calendar getUtcCalendarOf(@Nullable Calendar rawCalendar) {
-        Calendar utc = new PersianCalendar(getTimeZone());
+        Calendar utc = getCalendarInstance();
         if (rawCalendar == null) {
             utc.clear();
         } else {

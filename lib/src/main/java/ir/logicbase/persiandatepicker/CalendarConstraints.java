@@ -26,7 +26,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Map;
 
-import ir.logicbase.persiandatepicker.internal.PersianCalendar;
+import ir.logicbase.jalalicalendar.MonthPersian;
 
 /**
  * Used to limit the display range of {@link MaterialCalendar} and set an openAt month.
@@ -223,13 +223,13 @@ public final class CalendarConstraints implements Parcelable {
          * is called. Set to January, 1900.
          */
         static final long DEFAULT_START =
-                UtcDates.canonicalYearMonthDay(Month.create(1390, PersianCalendar.FARVARDIN).timeInMillis);
+                UtcDates.canonicalYearMonthDay(Month.create(1390, MonthPersian.Farvardin.ordinal()).timeInMillis);
         /**
          * Default UTC timeInMilliseconds for the last selectable month unless {@link Builder#setEnd} is
          * called. Set to December, 2100.
          */
         static final long DEFAULT_END =
-                UtcDates.canonicalYearMonthDay(Month.create(1500, PersianCalendar.ESFAND).timeInMillis);
+                UtcDates.canonicalYearMonthDay(Month.create(1500, MonthPersian.Esfand.ordinal()).timeInMillis);
 
         private static final String DEEP_COPY_VALIDATOR_KEY = "DEEP_COPY_VALIDATOR_KEY";
 

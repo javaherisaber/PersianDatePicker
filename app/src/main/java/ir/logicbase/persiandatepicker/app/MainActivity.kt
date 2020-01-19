@@ -16,8 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        val calendar = MaterialDatePicker.clearedUtcCalendar()
-        calendar.timeInMillis = MaterialDatePicker.todayInUtcMilliseconds()
+        val calendar = MaterialDatePicker.todayCalendar()
         val colorState1 = ResourcesCompat.getColor(resources, R.color.colorCalendarState1, null)
         val colorState2 = ResourcesCompat.getColor(resources, R.color.colorCalendarState2, null)
         val colorState3 = ResourcesCompat.getColor(resources, R.color.colorCalendarState3, null)
@@ -39,13 +38,15 @@ class MainActivity : AppCompatActivity() {
 
         fab.setOnClickListener {
             val builder = MaterialDatePicker.Builder.datePicker()
-            val today = MaterialDatePicker.todayInUtcMilliseconds()
-            builder.setSelection(today)
+            val today = MaterialDatePicker.todayCalendar()
+            val start = MaterialDatePicker.otherMonthCalendar(2, false)
+            val end = MaterialDatePicker.otherMonthCalendar(6, true)
+            builder.setSelection(today.timeInMillis)
 
             val constraintsBuilder = CalendarConstraints.Builder()
-            constraintsBuilder.setStart(today) // start month
-            constraintsBuilder.setEnd(MaterialDatePicker.futureMonthInUtcMilliseconds(6)) // end month
-            constraintsBuilder.setOpenAt(today) // calendar first visible month when opening
+            constraintsBuilder.setStart(start.timeInMillis) // start month
+            constraintsBuilder.setEnd(end.timeInMillis) // end month
+            constraintsBuilder.setOpenAt(today.timeInMillis) // calendar first visible month when opening
             constraintsBuilder.setDayToItemBackgroundColor(dayToColorMap)
             constraintsBuilder.setHintTitleToColor(hintTitleToColor)
 

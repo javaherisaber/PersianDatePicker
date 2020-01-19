@@ -38,10 +38,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 
+import ir.logicbase.jalalicalendar.MonthPersian;
 import ir.logicbase.persiandatepicker.internal.ViewUtils;
 import ir.logicbase.persiandatepicker.resource.MaterialAttributes;
-
-import static ir.logicbase.persiandatepicker.internal.PersianCalendar.PERSIAN_MONTH;
 
 /**
  * A {@link DateSelector} that uses a {@link Long} for its selection state.
@@ -155,7 +154,9 @@ public class SingleDateSelector implements DateSelector<Long> {
     int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
     int month = calendar.get(Calendar.MONTH);
     int year = calendar.get(Calendar.YEAR);
-    return String.valueOf(dayOfMonth).concat(" ").concat(PERSIAN_MONTH[month]).concat(" ").concat(String.valueOf(year));
+    return String.valueOf(dayOfMonth).concat(" ")
+            .concat(MonthPersian.of(month).getPersianText()).concat(" ")
+            .concat(String.valueOf(year));
 //    String startString = DateStrings.getYearMonthDay(selectedItem);
 //    return res.getString(R.string.mtrl_picker_date_header_selected, startString);
   }

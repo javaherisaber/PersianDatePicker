@@ -18,42 +18,20 @@ package ir.logicbase.persiandatepicker;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.util.Arrays;
 import java.util.Calendar;
 
-import ir.logicbase.persiandatepicker.internal.PersianCalendar;
-
-import static ir.logicbase.persiandatepicker.internal.PersianCalendar.PERSIAN_MONTH;
+import ir.logicbase.jalalicalendar.JalaliCalendar;
+import ir.logicbase.jalalicalendar.MonthPersian;
 
 /** Contains convenience operations for a month within a specific year. */
 final class Month implements Comparable<Month>, Parcelable {
 
-  /** The acceptable int values for month when using {@link Month#create(int, int)} */
-  @Retention(RetentionPolicy.SOURCE)
-  @IntDef({
-    PersianCalendar.FARVARDIN,
-    PersianCalendar.ORDIBEHESHT,
-    PersianCalendar.KHORDAD,
-    PersianCalendar.TIR,
-    PersianCalendar.MORDAD,
-    PersianCalendar.SHAHRIVAR,
-    PersianCalendar.MEHR,
-    PersianCalendar.ABAN,
-    PersianCalendar.AZAR,
-    PersianCalendar.DEY,
-    PersianCalendar.BAHMAN,
-    PersianCalendar.ESFAND
-  })
-  @interface Months {}
-
   @NonNull private final Calendar firstOfMonth;
 //  @NonNull private final String longName;
-  @Months final int month;
+  final int month;
   final int year;
   final int daysInWeek;
   final int daysInMonth;
@@ -85,12 +63,11 @@ final class Month implements Comparable<Month>, Parcelable {
    * Creates an instance of Month with the given parameters backed by a {@link Calendar}.
    *
    * @param year The year
-   * @param month The 0-index based month. Use {@link Calendar} constants (e.g., {@link
-   *     Calendar#JANUARY}
+   * @param month The 0-index based month.
    * @return A Month object backed by a new {@link Calendar} instance
    */
   @NonNull
-  static Month create(int year, @Months int month) {
+  static Month create(int year, int month) {
     Calendar calendar = UtcDates.getUtcCalendar();
     calendar.set(Calendar.YEAR, year);
     calendar.set(Calendar.MONTH, month);
@@ -144,13 +121,13 @@ final class Month implements Comparable<Month>, Parcelable {
    * negative.
    *
    * @throws IllegalArgumentException when {@link Calendar#getInstance()} is not an instance of
-   *     {@link PersianCalendar}
+   *     {@link JalaliCalendar}
    */
   int monthsUntil(@NonNull Month other) {
-    if (firstOfMonth instanceof PersianCalendar) {
+    if (firstOfMonth instanceof JalaliCalendar) {
       return (other.year - year) * 12 + (other.month - month);
     } else {
-      throw new IllegalArgumentException("Only Persian calendars are supported.");
+      throw new IllegalArgumentException("Only Jalali calendars are supported.");
     }
   }
 
@@ -187,7 +164,7 @@ final class Month implements Comparable<Month>, Parcelable {
   /** Returns a localized String representation of the month name and year. */
   @NonNull
   String getLongName() {
-    return PERSIAN_MONTH[month].concat(" ").concat(String.valueOf(year));
+    return MonthPersian.of(month).getPersianText().concat(" ").concat(String.valueOf(year));
   }
 
   /* Parcelable interface */

@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Map;
 
-import ir.logicbase.persiandatepicker.internal.PersianCalendar;
+import ir.logicbase.jalalicalendar.JalaliCalendar;
 
 /**
  * Represents the days of a month with {@link TextView} instances for each day.
@@ -40,7 +40,7 @@ import ir.logicbase.persiandatepicker.internal.PersianCalendar;
 class MonthAdapter extends BaseAdapter {
 
   /**
-   * The maximum number of weeks possible in any month. 6 for {@link PersianCalendar}.
+   * The maximum number of weeks possible in any month. 6 for {@link JalaliCalendar}.
    */
   static final int MAXIMUM_WEEKS = UtcDates.getUtcCalendar().getMaximum(Calendar.WEEK_OF_MONTH);
 

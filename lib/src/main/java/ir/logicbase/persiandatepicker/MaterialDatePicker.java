@@ -80,20 +80,19 @@ public final class MaterialDatePicker<S> extends DialogFragment {
         return Month.today().timeInMillis;
     }
 
-    public static long todayInUtcMilliseconds() {
-        return UtcDates.getTodayCalendar().getTimeInMillis();
+    public static Calendar todayCalendar() {
+        return UtcDates.getTodayCalendar();
     }
 
-    public static long futureMonthInUtcMilliseconds(int monthsLater) {
-        Calendar calendar = clearedUtcCalendar();
-        calendar.setTimeInMillis(todayInUtcMilliseconds());
-        calendar.add(Calendar.MONTH, monthsLater);
-        return calendar.getTimeInMillis();
-    }
-
-    public static Calendar clearedUtcCalendar() {
+    public static Calendar otherMonthCalendar(int months, boolean isFuture) {
         Calendar calendar = UtcDates.getTodayCalendar();
-        calendar.clear();
+        calendar.add(Calendar.MONTH, isFuture ? months : -months);
+        return calendar;
+    }
+
+    public static Calendar calendarOf(int year, int month, int date) {
+        Calendar calendar = UtcDates.getTodayCalendar();
+        calendar.set(year, month, date);
         return calendar;
     }
 
