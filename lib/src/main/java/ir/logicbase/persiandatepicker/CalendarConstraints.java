@@ -43,9 +43,9 @@ public final class CalendarConstraints implements Parcelable {
     @NonNull
     private final Month openAt;
     @Nullable
-    private final Map<Long, Integer> dayToItemBackgroundColor; // Map<timestamp, colorInt>
+    private final Map<Long, Integer> dayToItemBackgroundColor; // Map<timestamp, colorResId>
     @Nullable
-    private final Map<String, Integer> hintTitleToColor; // Map<title, colorInt>
+    private final Map<String, Integer> hintTitleToColor; // Map<title, colorResId>
     private final DateValidator validator;
 
     private final int yearSpan;
@@ -279,6 +279,12 @@ public final class CalendarConstraints implements Parcelable {
             return this;
         }
 
+        @NonNull
+        public Builder setStart(Calendar calendar) {
+            start = UtcDates.getDayCopy(calendar).getTimeInMillis();
+            return this;
+        }
+
         /**
          * A UTC timeInMilliseconds contained within the latest month the calendar will page to.
          * Defaults December, 2100.
@@ -303,6 +309,12 @@ public final class CalendarConstraints implements Parcelable {
         @NonNull
         public Builder setEnd(long month) {
             end = month;
+            return this;
+        }
+
+        @NonNull
+        public Builder setEnd(Calendar calendar) {
+            end = UtcDates.getDayCopy(calendar).getTimeInMillis();
             return this;
         }
 
@@ -333,6 +345,12 @@ public final class CalendarConstraints implements Parcelable {
             return this;
         }
 
+        @NonNull
+        public Builder setOpenAt(Calendar calendar) {
+            openAt = UtcDates.getDayCopy(calendar).getTimeInMillis();
+            return this;
+        }
+
         /**
          * Limits valid dates to those for which {@link DateValidator#isValid(long)} is true. Defaults
          * to all dates as valid.
@@ -343,12 +361,22 @@ public final class CalendarConstraints implements Parcelable {
             return this;
         }
 
+        /**
+         * Background color to be set on day items for given date (millis)
+         *
+         * @param dayToItemBackgroundColor map of millis to ColorResId eg. <1560700000, R.color.colorPrimary>
+         */
         @NonNull
         public Builder setDayToItemBackgroundColor(Map<Long, Integer> dayToItemBackgroundColor) {
             this.dayToItemBackgroundColor = dayToItemBackgroundColor;
             return this;
         }
 
+        /**
+         * Hint items color
+         *
+         * @param hintTitleToColor map of title to ColorResId eg. <state1, R.color.colorPrimary>
+         */
         @NonNull
         public Builder setHintTitleToColor(Map<String, Integer> hintTitleToColor) {
             this.hintTitleToColor = hintTitleToColor;
