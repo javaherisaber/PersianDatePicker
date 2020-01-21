@@ -92,9 +92,13 @@ public final class MaterialDatePicker<S> extends DialogFragment {
     }
 
     public static Calendar calendarOf(int year, int month, int date) {
-        Calendar calendar = UtcDates.getTodayCalendar();
-        calendar.set(year, month, date);
-        return calendar;
+        Calendar calibrated = UtcDates.getUtcCalendar();
+        calibrated.set(year, month, date);
+        return calibrated;
+    }
+
+    public static Calendar calendarOf(Calendar calendar) {
+        return UtcDates.getUtcCalendarCalibrated(calendar);
     }
 
     /**
@@ -268,7 +272,7 @@ public final class MaterialDatePicker<S> extends DialogFragment {
         if (calendarConstraints != null && calendarConstraints.getHintTitleToColor() != null
                 && calendarConstraints.getHintTitleToColor().size() > 0) {
             Map<String, Integer> hintData = calendarConstraints.getHintTitleToColor();
-            for (Map.Entry<String, Integer> entry: hintData.entrySet()) {
+            for (Map.Entry<String, Integer> entry : hintData.entrySet()) {
                 Chip chip = (Chip) layoutInflater.inflate(R.layout.pdp_calendar_hint, viewGroup);
                 chip.setId(entry.getValue());
                 chip.setText(entry.getKey());

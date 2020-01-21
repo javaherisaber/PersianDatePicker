@@ -281,7 +281,7 @@ public final class CalendarConstraints implements Parcelable {
 
         @NonNull
         public Builder setStart(Calendar calendar) {
-            start = UtcDates.getDayCopy(calendar).getTimeInMillis();
+            start = UtcDates.getUtcCalendarCalibrated(calendar).getTimeInMillis();
             return this;
         }
 
@@ -314,7 +314,7 @@ public final class CalendarConstraints implements Parcelable {
 
         @NonNull
         public Builder setEnd(Calendar calendar) {
-            end = UtcDates.getDayCopy(calendar).getTimeInMillis();
+            end = UtcDates.getUtcCalendarCalibrated(calendar).getTimeInMillis();
             return this;
         }
 
@@ -347,7 +347,7 @@ public final class CalendarConstraints implements Parcelable {
 
         @NonNull
         public Builder setOpenAt(Calendar calendar) {
-            openAt = UtcDates.getDayCopy(calendar).getTimeInMillis();
+            openAt = UtcDates.getUtcCalendarCalibrated(calendar).getTimeInMillis();
             return this;
         }
 

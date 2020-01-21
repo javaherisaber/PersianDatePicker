@@ -88,6 +88,15 @@ class UtcDates {
     }
 
     /**
+     * When timezone is different you can use this to get calibrated calendar
+     */
+    static Calendar getUtcCalendarCalibrated(@NonNull Calendar calendar) {
+        Calendar calibrated = UtcDates.getUtcCalendar();
+        calibrated.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        return calibrated;
+    }
+
+    /**
      * Returns a Calendar object in UTC time zone representing the start of day in UTC represented in
      * the input Calendar object, i.e., the time (fields smaller than a day) is stripped based on the
      * UTC time zone.
