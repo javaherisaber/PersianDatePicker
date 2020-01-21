@@ -41,6 +41,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.annotation.StyleRes;
 import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.content.ContextCompat;
 import androidx.core.util.Pair;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.DialogFragment;
@@ -271,7 +272,8 @@ public final class MaterialDatePicker<S> extends DialogFragment {
                 Chip chip = (Chip) layoutInflater.inflate(R.layout.pdp_calendar_hint, viewGroup);
                 chip.setId(entry.getValue());
                 chip.setText(entry.getKey());
-                chip.setChipIconTint(ColorStateList.valueOf(entry.getValue()));
+                int color = ContextCompat.getColor(context, entry.getValue());
+                chip.setChipIconTint(ColorStateList.valueOf(color));
                 hintItems.addView(chip);
             }
         } else {

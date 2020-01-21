@@ -27,9 +27,10 @@ import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.widget.TextView;
 
-import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.StyleRes;
+import androidx.core.content.ContextCompat;
 import androidx.core.util.Preconditions;
 import androidx.core.view.ViewCompat;
 
@@ -95,7 +96,7 @@ final class CalendarItemStyle {
 
     @NonNull
     static CalendarItemStyle create(
-            @NonNull Context context, @StyleRes int materialCalendarItemStyle, @ColorInt int itemBackgroundColor) {
+            @NonNull Context context, @StyleRes int materialCalendarItemStyle, @ColorRes int itemBackgroundColor) {
         Preconditions.checkArgument(
                 materialCalendarItemStyle != 0, "Cannot create a CalendarItemStyle with a styleResId of 0");
 
@@ -117,7 +118,8 @@ final class CalendarItemStyle {
 
         ColorStateList backgroundColor;
         if (itemBackgroundColor != -1) {
-            backgroundColor = ColorStateList.valueOf(itemBackgroundColor);
+            int color = ContextCompat.getColor(context, itemBackgroundColor);
+            backgroundColor = ColorStateList.valueOf(color);
         } else {
             backgroundColor = MaterialResources.getColorStateList(
                     context, styleableArray, R.styleable.MaterialCalendarItem_itemFillColor);

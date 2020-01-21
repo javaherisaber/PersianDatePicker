@@ -3,7 +3,6 @@ package ir.logicbase.persiandatepicker.app
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.res.ResourcesCompat
 import ir.logicbase.persiandatepicker.CalendarConstraints
 import ir.logicbase.persiandatepicker.MaterialDatePicker
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,9 +16,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val calendar = MaterialDatePicker.todayCalendar()
-        val colorState1 = ResourcesCompat.getColor(resources, R.color.colorCalendarState1, null)
-        val colorState2 = ResourcesCompat.getColor(resources, R.color.colorCalendarState2, null)
-        val colorState3 = ResourcesCompat.getColor(resources, R.color.colorCalendarState3, null)
+        val colorState1 = R.color.colorCalendarState1
+        val colorState2 = R.color.colorCalendarState2
+        val colorState3 = R.color.colorCalendarState3
         val dayToColorMap = mutableMapOf<Long, Int>()
         repeat(10) {
             dayToColorMap[calendar.timeInMillis] = colorState1
