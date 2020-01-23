@@ -20,15 +20,15 @@ class MainActivity : AppCompatActivity() {
         val colorState2 = R.color.colorCalendarState2
         val colorState3 = R.color.colorCalendarState3
         val dayToColorMap = mutableMapOf<Long, Int>()
-        repeat(10) {
+        repeat(20) {
             dayToColorMap[calendar.timeInMillis] = colorState1
             calendar.add(Calendar.DAY_OF_MONTH, 1)
         }
-        repeat(10) {
+        repeat(20) {
             dayToColorMap[calendar.timeInMillis] = colorState2
             calendar.add(Calendar.DAY_OF_MONTH, 1)
         }
-        repeat(10) {
+        repeat(30) {
             dayToColorMap[calendar.timeInMillis] = colorState3
             calendar.add(Calendar.DAY_OF_MONTH, 1)
         }
