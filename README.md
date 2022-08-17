@@ -18,7 +18,7 @@ allprojects {
 Module level build.gradle
 ```groovy
 dependencies {
-  implementation "com.github.javaherisaber:PersianDatePicker:$versions.persianDatePicker"
+  implementation 'com.github.javaherisaber:PersianDatePicker:1.1.4'
 }
 ```
 
